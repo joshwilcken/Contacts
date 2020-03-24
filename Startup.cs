@@ -23,8 +23,8 @@ namespace WebApplication1
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContextPool<MyContext>(options =>
-                options.UseSqlServer("Data Source = (localdb)\\MSSQLLocalDB;Database=Contact;Trusted_Connection=True"));
+            services.AddDbContextPool<DataContext>(options =>
+                options.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=Contact;Trusted_Connection=True"));
             services.AddTransient<ContactsService>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 

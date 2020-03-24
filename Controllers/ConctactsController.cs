@@ -14,6 +14,7 @@ namespace WebApplication1.Controllers
         private readonly ContactsService _contactsService;
         public ContactsController(ContactsService contactsService)
         {
+
             _contactsService = contactsService;
         }
 
@@ -23,22 +24,31 @@ namespace WebApplication1.Controllers
             return Ok(_contactsService.GetContacts());
         }
 
-        [HttpPut]
-        public void EditContact()
-        {
-
-        }
-
         [HttpPost]
-        public void AddContact()
+        public IActionResult AddContact([FromBody] Contact contact)
         {
-
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            return Ok(_contactsService.SaveContact(contact));
         }
 
-        [HttpDelete]
-        public void DeleteContact()
+        [HttpDelete("{id}")]
+        public IActionResult DeleteContact(int id)
         {
-
+            return Ok(_contactsService.DeleteContact(id));
         }
+
+        [HttpPut]
+        public IActionResult EditContact([FromBody] Contact contact)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            return Ok(_contactsService.EditContact(contact));
+        }
+
     }
 }

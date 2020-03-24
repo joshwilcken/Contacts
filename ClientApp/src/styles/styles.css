@@ -1,0 +1,32 @@
+.top-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px !important;
+}
+
+.contacts-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-section {
+    display: flex !important;
+    justify-content: space-evenly !important;
+    align-items: flex-start !important;
+    flex-wrap: wrap !important;
+ }
+
+.last {
+    margin-top: 10px !important;
+}
+
+.add {
+    margin-left: 10px !important;
+    cursor: pointer;
+}
+
+.warning {
+    color: red;
+}

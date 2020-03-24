@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import { Menu } from "./Menu";
 import { Contacts } from "./Contacts"
-import { EditContact } from "./EditContact";
 
 export class Home extends Component {
 
@@ -10,31 +9,24 @@ export class Home extends Component {
     super(props);
 
     this.state = {
-      showEditContact: false,
-      showDeleteContact: false
-    }
+      showAddContactModal: false,
+   }
   }
 
-  render () {
+  render() {
     return (
       <div className="main">
-            <Menu addContact={this.toggleShowEditContact}/>
-            <Contacts/>
-            <EditContact showEditContact={this.state.showEditContact}
-              toggleShowEditContact={this.toggleShowEditContact}/>
+        <Menu addContact={this.toggleShowModal} />
+        <Contacts showAddContactModal={this.state.showAddContactModal}
+          toggleShowAddContactModal={this.toggleShowModal}/>
       </div>
     );
   }
 
-  toggleShowEditContact = () => {
+  toggleShowModal = () => {
     this.setState((prevState) => {
-      return {showEditContact: !prevState.showEditContact}
+      return { showAddContactModal: !prevState.showAddContactModal }
     })
   }
 
-  toggleShowDeleteContact = () => {
-    this.setState((prevState) => {
-      return {showDeleteContact: !prevState.showDeleteContact}
-    })
-  }
 }

@@ -3,14 +3,16 @@ using Contacts.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Contacts.Migrations
 {
-    [DbContext(typeof(MyContext))]
-    partial class MyContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(DataContext))]
+    [Migration("20200324011441_Contact")]
+    partial class Contact
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,19 +26,26 @@ namespace Contacts.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("City");
+                    b.Property<string>("City")
+                        .IsRequired();
 
-                    b.Property<string>("Email");
+                    b.Property<string>("Email")
+                        .IsRequired();
 
-                    b.Property<string>("FirstName");
+                    b.Property<string>("FirstName")
+                        .IsRequired();
 
-                    b.Property<string>("LastName");
+                    b.Property<string>("LastName")
+                        .IsRequired();
 
-                    b.Property<int>("PhoneNumber");
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired();
 
-                    b.Property<string>("State");
+                    b.Property<string>("State")
+                        .IsRequired();
 
-                    b.Property<string>("Street");
+                    b.Property<string>("Street")
+                        .IsRequired();
 
                     b.Property<int>("Zip");
 
@@ -52,7 +61,7 @@ namespace Contacts.Migrations
                             Email = "steveR@Avengers.com",
                             FirstName = "Steve",
                             LastName = "Rogers",
-                            PhoneNumber = 1115551234,
+                            PhoneNumber = "1115551234",
                             State = "NY",
                             Street = "123 Brooklyn St.",
                             Zip = 11234

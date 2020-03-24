@@ -5,10 +5,10 @@ using WebApplication1.Controllers;
 
 namespace Contacts.Models
 {
-    public class MyContext : DbContext
+    public class DataContext : DbContext
     {
 
-        public MyContext(DbContextOptions<MyContext> options)
+        public DataContext(DbContextOptions<DataContext> options)
             :base(options) { }
 
         public DbSet<Contact> Contact { get; set; }
@@ -33,7 +33,7 @@ namespace Contacts.Models
                     State = "NY",
                     Email = "steveR@Avengers.com",
                     Zip = 11234,
-                    PhoneNumber = 1115551234
+                    PhoneNumber = "1115551234"
                 }
                 );
         }
